@@ -18,7 +18,7 @@ let g:dispatch_compilers['ruby -Itest'] = 'rubyunit'
 " Utility {{{1
 
 function! s:function(name) abort
-  return function(substitute(a:name,'^s:',matchstr(expand('<sfile>'), '<SNR>\d\+_'),''))
+  return function(a:name)
 endfunction
 
 function! s:shellslash(path) abort
