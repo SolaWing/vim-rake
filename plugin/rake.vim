@@ -257,9 +257,10 @@ call s:add_methods('project',['path','real','ruby_include_path'])
 " Rake {{{1
 
 function! s:project_makeprg() dict abort
-  if executable(self.real('bin/rake'))
+  let rake = self.real('bin/rake')
+  if len(rake) >0 && executable(rake)
     return 'bin/rake'
-  elseif filereadable(self.real('bin/rake'))
+  elseif filereadable(rake)
     return 'ruby bin/rake'
   elseif filereadable(self.real('Gemfile'))
     return 'bundle exec rake'
